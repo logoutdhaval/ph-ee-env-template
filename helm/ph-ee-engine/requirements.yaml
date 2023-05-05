@@ -81,6 +81,6 @@ dependencies:
   - name: kafka
     version: 1.0.0
     repository: "file://./kafka"
-  - name: k6
+  - name: k6-operator
     version: 0.0.1
     repository: "file://./k6-operator"

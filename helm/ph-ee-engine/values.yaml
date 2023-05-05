@@ -1483,7 +1483,7 @@ kafka:
     cpu: "100m"
   deployment:
       annotations:
-        deployTime: "{{ .Values.k6.deployTime }}"
+        deployTime: "{{ .Values.deployTime }}"
 
 importer_rdbms:
   enabled: true
@@ -1995,7 +1995,7 @@ redis:
   replica:
     replicaCount: 0
 
-k6:
+k6-operator:
   # customAnnotations -- Custom Annotations to be applied on all resources
   customAnnotations: { }
 
