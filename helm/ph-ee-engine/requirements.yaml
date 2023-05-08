@@ -83,4 +83,4 @@ dependencies:
     repository: "file://./kafka"
   - name: k6-operator
     version: 0.0.1
-    repository: "file://./k6-operator"
+    repository: https://fynarfin.io/images/k6-operator-0.0.1/
