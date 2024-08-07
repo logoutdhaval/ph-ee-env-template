@@ -670,4 +670,3 @@ workflows:
           requires:
             - build-g2p-sandbox-ci-chart
             - build_and_push_post_installation_docker_image
-            - build-host-g2p-fyn-chart
