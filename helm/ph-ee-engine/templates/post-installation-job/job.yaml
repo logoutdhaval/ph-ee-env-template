@@ -12,7 +12,7 @@ spec:
       serviceAccountName: job-creator
       containers:
       - name: post-installation-job
-        image: ubuntu:latest 
+        image: {{ .Values.post_installation_job.image }}
         securityContext:
           privileged: true
         env: 
@@ -26,37 +26,6 @@ spec:
         - |
           #!/bin/bash
 
-          # Install required dependencies
-          apt-get update
-          # sudo apt-get update
-          apt-get --assume-yes install apt-transport-https ca-certificates curl gnupg lsb-release
-      
-          #install kubectl 
-          apt-get install -y apt-transport-https ca-certificates curl gpg
-
-          curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key |  gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-
-          # This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list
-          echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' |  tee /etc/apt/sources.list.d/kubernetes.list
-
-          apt-get install -y kubelet kubeadm kubectl
-          apt-mark hold kubelet kubeadm kubectl
-          apt-get install -y kubectl
-          curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
-          chmod +x ./kubectl
-          mv ./kubectl /usr/local/bin/kubectl
-          kubectl version
-
-          # Install Docker
-          apt-get install sysvinit-utils
-          apt-get --assume-yes install docker-ce docker-ce-cli containerd.io
-          #---------docker start steps-------
-          # service docker start
-          # Verify Docker is running
-
-          apt-get --assume-yes install git 
-          apt-get --assume-yes install make
-          
           git clone https://github.com/openMF/ph-ee-env-labs.git
           cd ph-ee-env-labs/helm/es-secret/
           make secrets || echo "elastic-secrets" already exists
@@ -67,9 +36,6 @@ spec:
           echo ---------------secrets created--------------- 
           sleep 20
 
-          #insatll netcat
-          apt-get update && apt-get install -y netcat-openbsd
-          echo "------------ netcat installed ---------------"
           sleep 10
           SERVICE_HOST=${SERVICE_HOST:-"ph-ee-zeebe-ops"}
           SERVICE_PORT=${SERVICE_PORT:-"80"}

@@ -2232,4 +2232,5 @@ minio:
       policy: public
 
 post_installation_job:
-  enabled: false
+  enabled: true
+  image: "fynarfin/post-installation-job:latest"
