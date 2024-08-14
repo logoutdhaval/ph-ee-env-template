@@ -352,14 +352,6 @@ operationsmysql:
       GRANT ALL PRIVILEGES ON messagegateway.* TO 'mifos';
       GRANT ALL PRIVILEGES ON phdefault.* TO 'mifos';
       GRANT ALL PRIVILEGES ON `voucher_management`.* TO 'mifos';
-  primary:
-    resources:
-      limits:
-        memory: "384M"
-        cpu: "250m"
-      requests:
-        memory: "256M"
-        cpu: "250m"
   volumeClaimTemplate:
     storageClassName: "gp2"
 
@@ -1872,7 +1864,7 @@ keycloak:
 integration_test:
   enabled: false
   replicas: 1
-  image: "docker.io/openmf/ph-ee-integration-test:1.6.7"
+  image: "docker.io/openmf/ph-ee-integration-test:v1.6.7"
   imageTag: v1.4.0-rc.1
   imagePullPolicy: "Never"
   limits:
