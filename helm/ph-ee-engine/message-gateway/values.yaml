@@ -16,7 +16,8 @@ CALLBACKCONFIG_HOST: "ph-ee-connector-notifications"
 HOSTCONFIG_HOST: "message-gateway"
 MYSQL_USERNAME: "mifos"
 MYSQL_PASSWORD: "password"
-DATASOURCE_URL: jdbc:mysql:thin://operationsmysql:3306/messagegateway
+DATASOURCE_URL: jdbc:mysql://operationsmysql:3306/messagegateway
+DATASOURCE_DRIVER_CLASS_NAME: "com.mysql.cj.jdbc.Driver"
 PROVIDERSOURCE_FROMDATABASE: "disabled"
 PROVIDERSOURCE_FROMYML: "enabled"
 limits:
