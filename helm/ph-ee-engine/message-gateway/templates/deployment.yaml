@@ -55,6 +55,8 @@ spec:
               value: "{{ .Values.DATASOURCE_URL }}"
             - name: "MYSQL_USERNAME"
               value: "{{ .Values.MYSQL_USERNAME }}"
+            - name: "SPRING_DATASOURCE_DRIVER_CLASS_NAME"
+              value: "{{.Values.DATASOURCE_DRIVER_CLASS_NAME}}"
             - name: "ZEEBE_BROKER_CONTACTPOINT"
               value: "{{ .Release.Name }}-zeebe-gateway:26500"
             - name: "MYSQL_PASSWORD"
